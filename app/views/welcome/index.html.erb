@@ -1,17 +1,22 @@
 
 <div class="row">
-<div class="jumbotron">
-  <h1>Techtannica</h1>
-  <p>Techtannica is a social, markdown wiki resource for technology.</p>
-</div>
+  <div class="jumbotron">
+    <h1>Techtannica</h1>
+    <h3>Techtannica is a social, markdown wiki resource for technology.</h3>
+    <% if user_signed_in? %>
+    Welcome <strong><%= current_user.email %>!</strong>
+    <% else %>
+    <button type="button" class="btn btn-secondary btn-lg"><%= link_to "SIGN UP", new_user_registration_path  %></button>
+    <% end %>
+  </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <h2>Techtannica</h2>
-    <p>Create as many public wikis as possible.</p>
+    <h4>Create as many public wikis as your heart desires.</h4>
   </div>
   <div class="col-md-6">
     <h2>Techtannica Plus</h2>
-    <p>Create private wikis.</p>
+    <h4>Create your very own private wikis.</h4>
   </div>
 </div>
