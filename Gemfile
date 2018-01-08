@@ -22,6 +22,7 @@ source 'https://rubygems.org'
  group :development, :test do
   gem 'rspec-rails', '~> 3.5.1'
   gem 'rails-controller-testing'
+  gem 'pry-rails'
 end
 
  # Use Puma as the app server
