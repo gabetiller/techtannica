@@ -31,14 +31,24 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.assign_attributes(wiki_params)
 
-    if @wiki.save
-      flash[:notice] = "Wiki was updated."
-      redirect_to @wiki
-    else
-      flash.now[:alert] = "There was an error saving the wiki. Please try again."
-      render :edit
+      authorize @wiki
+      if @wiki.update(wiki_params)
+        redirect_to @wiki
+      else
+        render :edit
+      end
     end
-  end
+
+
+
+  #   if @wiki.save
+  #     flash[:notice] = "Wiki was updated."
+  #     redirect_to @wiki
+  #   else
+  #     flash.now[:alert] = "There was an error saving the wiki. Please try again."
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @wiki = Wiki.find(params[:id])
