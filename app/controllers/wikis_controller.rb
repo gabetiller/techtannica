@@ -39,8 +39,6 @@ class WikisController < ApplicationController
       end
     end
 
-
-
   #   if @wiki.save
   #     flash[:notice] = "Wiki was updated."
   #     redirect_to @wiki

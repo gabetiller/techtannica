@@ -43,11 +43,15 @@ end
 
  gem 'bootstrap-sass'
 
- gem 'devise'
+ gem 'devise', '4.3.0'
 
  gem 'pundit'
 
  gem 'faker'
+
+ gem 'stripe'
+
+ gem 'figaro', '1.0'
 
 
  group :development do
