@@ -1,10 +1,13 @@
 class WikiPolicy < ApplicationPolicy
-  attr_reader :user, :wiki
 
-  def initialize(user, wiki)
-    @user = user
-    @wiki = wiki
-  end
-
+    class Scope < Scope
+      def resolve
+        if user.admin? || user.premium?
+          scope.all
+        else
+          scope.where(private: false)
+        end
+      end
+    end
 
 end

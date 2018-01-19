@@ -1,7 +1,8 @@
 class WikisController < ApplicationController
 
+
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -29,7 +30,7 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
-    @wiki.assign_attributes(wiki_params)
+    @wiki.update_attributes(wiki_params)
 
       authorize @wiki
       if @wiki.update(wiki_params)
@@ -38,6 +39,12 @@ class WikisController < ApplicationController
         render :edit
       end
     end
+
+    #
+    # f @post.update_attributes(permitted_attributes(@post))
+    #   redirect_to @post
+    # else
+    #   render :edit
 
   #   if @wiki.save
   #     flash[:notice] = "Wiki was updated."
@@ -61,7 +68,8 @@ class WikisController < ApplicationController
   end
 
   private
+  
   def wiki_params
-    params.require(:wiki).permit(:title, :body)
+    params.require(:wiki).permit(:title, :body, :private)
   end
 end

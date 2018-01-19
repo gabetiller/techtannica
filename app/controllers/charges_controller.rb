@@ -1,20 +1,17 @@
 class ChargesController < ApplicationController
 
-  @amount =  1500
-
-
   def new
   @stripe_btn_data = {
     key: "#{ Rails.configuration.stripe[:publishable_key] }",
     description: "BigMoney Membership - #{current_user.email}",
-    amount: @amount
+    amount: User.default_amount
   }
 end
 
   def create
     # Creates a Stripe Customer object, for associating
     # with the charge
-    @amount =  1500
+
     customer = Stripe::Customer.create(
       email: current_user.email,
       card: params[:stripeToken]
@@ -25,7 +22,7 @@ end
     # Where the real magic happens
     charge = Stripe::Charge.create(
       customer: customer.id, # Note -- this is NOT the user_id in your app
-      amount: @amount,
+      amount: User.default_amount,
       description: "BigMoney Membership - #{current_user.email}",
       currency: 'usd'
     )
@@ -47,12 +44,16 @@ end
   def downgrade
     if current_user.role == "premium"
      current_user.update_attribute(:role, 'standard')
-     flash[:notice] = "You have been downgraded to standard."
+     current_user.wikis.where(private: true).update_all(private: false)
+     flash[:notice] = "Sorry to see you go."
      redirect_to root_path(current_user)
    elsif current_user.role == "standard"
-     flash[:notice] = "You are already a standard member!"
+     flash[:notice] = "You are already a standard member"
      redirect_to wikis_path(current_user)
      end
    end
+
+
+   #find sign_in in spec folder bloccit
 
 end

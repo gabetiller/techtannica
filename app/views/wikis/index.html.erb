@@ -1,10 +1,12 @@
 <h1>Wikis</h1>
-<% @wikis.each do |wiki| %>
+<% policy_scope(@wikis).each do |wiki| %>
 <div class="media">
-     <div class="media-body">
-       <h4 class="media-heading">
-         <%= link_to wiki.title, wiki_path(wiki.id) %>
-       </h4>
-     </div>
-   </div>
-   <% end %>
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to wiki.title, wiki_path(wiki.id) %>
+    </h4>
+  </div>
+</div>
+<% end %>
+<br></br>
+<button type="button" class="btn btn-secondary btn-lg"><%= link_to "New Wiki", new_wiki_path  %></button>

@@ -12,5 +12,9 @@ class User < ApplicationRecord
     self.role ||= :standard
   end
 
+  def self.default_amount
+     1500
+  end
+
 
 end
