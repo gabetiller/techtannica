@@ -53,6 +53,8 @@ end
 
  gem 'figaro', '1.0'
 
+ gem 'redcarpet', '~> 3.0.0'
+
 
  group :development do
    gem 'listen', '~> 3.0.5'
