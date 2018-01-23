@@ -7,6 +7,7 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    @collaborators = @wiki.collaborating_user_ids
   end
 
   def new
@@ -32,28 +33,14 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.update_attributes(wiki_params)
 
-      authorize @wiki
-      if @wiki.update(wiki_params)
-        redirect_to @wiki
-      else
-        render :edit
-      end
+
+    authorize @wiki
+    if @wiki.update(wiki_params)
+      redirect_to @wiki
+    else
+      render :edit
     end
-
-    #
-    # f @post.update_attributes(permitted_attributes(@post))
-    #   redirect_to @post
-    # else
-    #   render :edit
-
-  #   if @wiki.save
-  #     flash[:notice] = "Wiki was updated."
-  #     redirect_to @wiki
-  #   else
-  #     flash.now[:alert] = "There was an error saving the wiki. Please try again."
-  #     render :edit
-  #   end
-  # end
+  end
 
   def destroy
     @wiki = Wiki.find(params[:id])
@@ -68,8 +55,9 @@ class WikisController < ApplicationController
   end
 
   private
-  
+
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :private)
+    params.require(:wiki).permit(:title, :body, :private, { :collaborating_user_ids => [] })
   end
+
 end
