@@ -1,6 +1,6 @@
 # Techtannica
 ## A markdown wiki collaboration tool.   
-<p>Techtannica is a Rails based application that allows users to create public or private wikis (based on membership credentials). If a standard user wishes to create private wikis and allow for collaboration with other users, there is an option to upgrade for a small fee (through stripe). </p>
+Techtannica is a Rails based application that allows users to create public or private wikis (based on membership credentials). If a standard user wishes to create private wikis and allow for collaboration with other users, there is an option to upgrade for a small fee (through stripe). 
 # Setup
 **Languages and Frameworks: Ruby on Rails and Bootstrap**
 
@@ -14,7 +14,7 @@ Databases: SQLite (Test, Development), PostgreSQL (Production)
 - Pundit for authorization
 - Stripe for payments
 
-## To run Blocipedia locally:
+## To run locally:
 
 - Clone the repository
 - Run bundle install
