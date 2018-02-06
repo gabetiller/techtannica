@@ -96,6 +96,7 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    normalize-rails (4.1.1)
     orm_adapter (0.5.0)
     pg (0.21.0)
     pry (0.11.3)
@@ -214,6 +215,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  normalize-rails
   pg
   pry-rails
   puma (~> 3.0)

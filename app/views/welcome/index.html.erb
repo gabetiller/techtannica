@@ -1,22 +1,22 @@
 
-<div class="row">
-  <div class="jumbotron text-center">
-    <h1>Techtannica</h1>
-    <h3>Techtannica is a social, markdown wiki resource for technology.</h3>
-    <% if user_signed_in? %>
-    Welcome <strong><%= current_user.email %>!</strong>
-    <br></br>
-    <button type="button" class="btn btn-secondary btn-lg"><%= link_to "New Wiki", new_wiki_path  %></button>
-    <button type="button" class="btn btn-secondary btn-lg"><%= link_to "Browse Wikis", wikis_path  %></button>
-    <% else %>
-    <button type="button" class="btn btn-secondary btn-lg"><%= link_to "Sign Up", new_user_registration_path  %></button>
-    <% end %>
-    <% if current_user.role != "premium" %>
-  <button type="button" class="btn btn-secondary btn-lg"><%= link_to "Subscribe", new_charge_path  %></button>
-  <% else %>
-  <button type="button" class= 'btn btn-secondary btn-lg'><%= link_to "Unsubscribe", new_charge_path  %></button>
-  <% end %>
-<br></br>
+<div class="row text-center">
+  <div>
+    <div class="dotted-border">
+      <h1 class="hero">TECHTANNICA</h1>
+      <h3 class="sub-hero">Social, Markdown Wikis.</h3>
+      <% if user_signed_in? %>
+      <br></br>
+      <button type="button"><%= link_to "New", new_wiki_path  %></button>
+      <button type="button"><%= link_to "Browse", wikis_path  %></button>
+      <% else %>
+      <button type="button"><%= link_to "Sign Up", new_user_registration_path  %></button>
+      <% end %>
+      <% if current_user.role != "premium" %>
+      <button type="button"><%= link_to "Subscribe", new_charge_path  %></button>
+      <% else %>
+      <button type="button"><%= link_to "Unsubscribe", new_charge_path  %></button>
+      <% end %>
+      <br></br>
+    </div>
   </div>
-
 </div>

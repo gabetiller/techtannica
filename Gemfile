@@ -55,6 +55,8 @@ end
 
  gem 'redcarpet', '~> 3.0.0'
 
+ gem 'normalize-rails'
+
 
  group :development do
    gem 'listen', '~> 3.0.5'
