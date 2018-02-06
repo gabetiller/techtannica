@@ -4,7 +4,7 @@ Techtannica is a Rails based application that allows users to create public or p
 # Setup
 **Languages and Frameworks: Ruby on Rails and Bootstrap**
 
-**Ruby version 2.4.1* *  
+**Ruby version 2.4.1**  
 Databases: SQLite (Test, Development), PostgreSQL (Production)
 
 **Development Tools and Gems:**
